@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CSVdataReaderTest {
     private String testCSVpath = "src/test/java/de/exxcellent/challenge/testResources/test.csv";
+
+    // Note: In a real case, it could be a bad idea to use this data for testing
     String mainResources = "src/main/resources/de/exxcellent/challenge/";
     private String weatherCSVpath = mainResources + "weather.csv";
 
