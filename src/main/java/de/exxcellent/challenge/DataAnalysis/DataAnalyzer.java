@@ -4,6 +4,7 @@ import de.exxcellent.challenge.Reader.CSVdataReader;
 import de.exxcellent.challenge.Reader.DataReader;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DataAnalyzer {
 
@@ -45,8 +46,7 @@ public class DataAnalyzer {
             }
         }
 
-        // TODO: Remove brackets from result string
-        return smallestSpreadRows.toString();
+        return Arrays.toString(smallestSpreadRows.toArray()).replace("[", "").replace("]", "");
     }
 
     /**
@@ -57,7 +57,6 @@ public class DataAnalyzer {
      * @return Spread between both values
      */
     private double getSpread(String first, String second) {
-        // TODO: Parse to double beforehand?
         double firstNumber = Double.parseDouble(first);
         double secondNumber = Double.parseDouble(second);
 

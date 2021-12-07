@@ -11,6 +11,7 @@ class CSVdataReaderTest {
     String mainResources = "src/main/resources/de/exxcellent/challenge/";
     private String testCSVpath = "src/test/java/de/exxcellent/challenge/testResources/test.csv";
     private String weatherCSVpath = mainResources + "weather.csv";
+    private String footballCSVpath = mainResources + "football.csv";
 
     @Test
     void testCSVExtractDataSetColumns1() {
@@ -37,4 +38,13 @@ class CSVdataReaderTest {
         assertEquals("1022.7", AvDP.get(29).get(2));
     }
 
+    @Test
+    void footballCSVExtractDataSetColumnsTest1(){
+        CSVdataReader csvReader = new CSVdataReader(footballCSVpath);
+        ArrayList<ArrayList<String>> teams = csvReader.extractDataSetColumns("Team");
+        assertEquals("Arsenal", teams.get(0).get(0));
+        assertEquals("Liverpool", teams.get(1).get(0));
+        assertEquals("Manchester United", teams.get(2).get(0));
+        assertEquals("Leicester", teams.get(19).get(0));
+    }
 }
