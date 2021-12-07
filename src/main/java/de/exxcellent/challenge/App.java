@@ -12,6 +12,7 @@ public final class App {
 
     /**
      * This is the main entry method of your program.
+     *
      * @param args The CLI arguments passed
      */
     public static void main(String... args) {

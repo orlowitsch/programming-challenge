@@ -14,6 +14,8 @@ class DataAnalyzerTest {
     private String footballCSVpath = mainResources + "football.csv";
 
 
+    // Output "Target" value of line with smallest spread between columns "Col1" and "Col2"
+    // in test.csv
     @Test
     void minimalSpreadTest1(){
         DataAnalyzer testAnalyzer = new DataAnalyzer(testCSVpath);
@@ -23,6 +25,8 @@ class DataAnalyzerTest {
         assertEquals("C", smallestSpread);
     }
 
+    // Output "Day" value of line with smallest spread between columns "MxT" and "MnT"
+    // in weather.csv
     @Test
     void weatherMinimalSpreadTest1(){
         DataAnalyzer weatherAnalyzer = new DataAnalyzer(weatherCSVpath);
@@ -42,6 +46,8 @@ class DataAnalyzerTest {
     }
 
 
+    // Output "Team" value of line with smallest spread between columns "Goals" and "Goals Allowed"
+    // in football.csv
     @Test
     void footballMinimalSpreadTest1(){
         DataAnalyzer footballAnalyzer = new DataAnalyzer(footballCSVpath);

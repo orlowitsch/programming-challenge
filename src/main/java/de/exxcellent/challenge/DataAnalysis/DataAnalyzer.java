@@ -4,11 +4,13 @@ import de.exxcellent.challenge.Reader.DataReader;
 import de.exxcellent.challenge.Reader.DataReaderFactory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
+/**
+ * Class for data science tasks.
+ */
 public class DataAnalyzer {
 
-    private DataReader dataReader;
+    private final DataReader dataReader;
 
     public DataAnalyzer(String data) {
         DataReaderFactory dataReaderFactory = new DataReaderFactory();
@@ -22,8 +24,8 @@ public class DataAnalyzer {
      * @param targetName Label of the target column
      * @param col1       Label of first column
      * @param col2       Label of second column
-     * @return Value(s) of target column. Can return multiple values if the discrepancy
-     * between col1 and col2 is equal for all of them
+     * @return Value(s) of target column. Can return multiple values if multiple
+     * lines have the same minimum spread between col1 and col2.
      */
     public String getTargetWithSmallestSpread(String targetName, String col1, String col2) {
         // Extract relevant data set. Outer list = lines ; inner list = columns
@@ -46,7 +48,7 @@ public class DataAnalyzer {
             }
         }
 
-        return Arrays.toString(smallestSpreadRows.toArray()).replace("[", "").replace("]", "");
+        return removeBrackets(smallestSpreadRows.toString());
     }
 
     /**
@@ -61,6 +63,16 @@ public class DataAnalyzer {
         double secondNumber = Double.parseDouble(second);
 
         return Math.abs(firstNumber - secondNumber);
+    }
+
+    /**
+     * Removes surrounding brackets from a string for a cleaner output
+     *
+     * @param output String with surrounding brackets (e.g. "[A, B, C]")
+     * @return e.g. "A, B, C"
+     */
+    private String removeBrackets(String output) {
+        return output.replace("[", "").replace("]", "");
     }
 
 }

@@ -8,14 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DataReaderFactoryTest {
 
+    // Test exception for file types for which no reader exists
     @Test
     void testDataReaderException1() {
         DataReaderFactory dataReaderFactory = new DataReaderFactory();
         assertThrows(NotImplementedException.class, () -> dataReaderFactory.getDataReader("test.invalidFileFormat"));
     }
 
+    // Test correct selection of CSV reader
     @Test
-    void testDataReaderException2() {
+    void testDataReaderCSVSelection() {
         DataReaderFactory dataReaderFactory = new DataReaderFactory();
         DataReader csvReader = dataReaderFactory.getDataReader("test.csv");
         assertTrue(csvReader instanceof CSVdataReader);

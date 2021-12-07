@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CSVdataReader implements DataReader {
-    private String dataPath;
+    private final String dataPath;
 
     public CSVdataReader(String dataPath) {
         this.dataPath = dataPath;
@@ -40,17 +40,25 @@ public class CSVdataReader implements DataReader {
     }
 
     /**
-     * Determine column indices for each header in columns
+     * Determine column indices for each header in columns.
+     * Throws exception if selected column headers (columns...) do not match headers in CSV file.
      *
      * @param headers First line of CSV file which contains column headers
      * @param columns The column headers of interest for which indices are needed
-     * @return numeric indices of columns. Returns -1 for column labels not contained in headers.
+     * @return numeric indices of columns.
      */
     private int[] getHeaderLocation(String[] headers, String... columns) {
         int[] indexes = new int[columns.length];
         int index = 0;
         for (String column : columns) {
-            indexes[index] = Arrays.asList(headers).indexOf(column);
+            int columnIndex = Arrays.asList(headers).indexOf(column);
+
+            if (columnIndex == -1) {
+                throw new IllegalArgumentException("Selected column (" + column + ") was not found in " +
+                        "CSV data headers (" + Arrays.toString(headers) + ").");
+            }
+
+            indexes[index] = columnIndex;
             index++;
         }
         return indexes;
