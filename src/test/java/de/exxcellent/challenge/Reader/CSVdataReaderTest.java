@@ -4,20 +4,19 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CSVdataReaderTest {
-    private String testCSVpath = "src/test/java/de/exxcellent/challenge/testResources/test.csv";
-
     // Note: In a real case, it could be a bad idea to use this data for testing
     String mainResources = "src/main/resources/de/exxcellent/challenge/";
+    private String testCSVpath = "src/test/java/de/exxcellent/challenge/testResources/test.csv";
     private String weatherCSVpath = mainResources + "weather.csv";
 
     @Test
-    void testCSVExtractDataSetColumns1(){
+    void testCSVExtractDataSetColumns1() {
         CSVdataReader csvReader = new CSVdataReader(testCSVpath);
         ArrayList<ArrayList<String>> incompleteDataSet
-                = csvReader.extractDataSetColumns("Target","Col2");
+                = csvReader.extractDataSetColumns("Target", "Col2");
         assertEquals(4, incompleteDataSet.size());
         assertEquals("A", incompleteDataSet.get(0).get(0));
         assertEquals("D", incompleteDataSet.get(3).get(0));
@@ -25,10 +24,10 @@ class CSVdataReaderTest {
     }
 
     @Test
-    void weatherCSVExtractDataSetColumnsTest1(){
+    void weatherCSVExtractDataSetColumnsTest1() {
         CSVdataReader csvReader = new CSVdataReader(weatherCSVpath);
         ArrayList<ArrayList<String>> AvDP
-                = csvReader.extractDataSetColumns("AvDP","1HrP TPcpn","R AvSLP");
+                = csvReader.extractDataSetColumns("AvDP", "1HrP TPcpn", "R AvSLP");
         assertEquals("53.8", AvDP.get(0).get(0));
         assertEquals("0", AvDP.get(0).get(1));
         assertEquals("1004.5", AvDP.get(0).get(2));
