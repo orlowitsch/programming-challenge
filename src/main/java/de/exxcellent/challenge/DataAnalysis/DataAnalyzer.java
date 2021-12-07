@@ -2,6 +2,7 @@ package de.exxcellent.challenge.DataAnalysis;
 
 import de.exxcellent.challenge.Reader.CSVdataReader;
 import de.exxcellent.challenge.Reader.DataReader;
+import de.exxcellent.challenge.Reader.DataReaderFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,8 +12,8 @@ public class DataAnalyzer {
     private DataReader dataReader;
 
     public DataAnalyzer(String data) {
-        // TODO: Mechanism to select correct reader automatically based on filetype
-        this.dataReader = new CSVdataReader(data);
+        DataReaderFactory dataReaderFactory = new DataReaderFactory();
+        this.dataReader = dataReaderFactory.getDataReader(data);
     }
 
     /**

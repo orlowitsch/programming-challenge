@@ -1,10 +1,12 @@
 package de.exxcellent.challenge.Reader;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CSVdataReaderTest {
     // Note: In a real case, it could be a bad idea to use this data for testing
@@ -23,6 +25,7 @@ class CSVdataReaderTest {
         assertEquals("D", incompleteDataSet.get(3).get(0));
         assertEquals("10", incompleteDataSet.get(3).get(1));
     }
+
 
     @Test
     void weatherCSVExtractDataSetColumnsTest1() {
