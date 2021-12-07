@@ -19,13 +19,17 @@ public final class App {
         // Your preparation code …
         String mainResources = "src/main/resources/de/exxcellent/challenge/";
         String weatherCSVpath = mainResources + "weather.csv";
+        String footballCSVpath = mainResources + "football.csv";
+        DataAnalyzer weatherDataAnalyzer = new DataAnalyzer(weatherCSVpath);
+        DataAnalyzer footballDataAnalyzer = new DataAnalyzer(footballCSVpath);
 
-        DataAnalyzer dataAnalyzer = new DataAnalyzer(weatherCSVpath);
-        String dayWithSmallestTempSpread = dataAnalyzer
+        String dayWithSmallestTempSpread = weatherDataAnalyzer
                 .getTargetWithSmallestSpread("Day", "MxT", "MnT");     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
-        String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
+
+        String teamWithSmallestGoalSpread = footballDataAnalyzer
+                .getTargetWithSmallestSpread("Team", "Goals", "Goals Allowed"); // Your goal analysis function call …
         System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
     }
 }

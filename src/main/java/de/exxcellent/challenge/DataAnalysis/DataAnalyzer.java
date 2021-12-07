@@ -1,6 +1,5 @@
 package de.exxcellent.challenge.DataAnalysis;
 
-import de.exxcellent.challenge.Reader.CSVdataReader;
 import de.exxcellent.challenge.Reader.DataReader;
 import de.exxcellent.challenge.Reader.DataReaderFactory;
 
@@ -32,7 +31,7 @@ public class DataAnalyzer {
 
         // Initialize variables
         ArrayList<String> smallestSpreadRows = new ArrayList<>();
-        double spreadMin = Double.MAX_VALUE;
+        double spreadMin = getSpread(dataSet.get(0).get(1), dataSet.get(0).get(2));
 
         // Find dataset with smallest spread between col1 and col2
         for (ArrayList<String> dataRow : dataSet) {
